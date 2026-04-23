@@ -20,12 +20,15 @@ response will be a class with variables for each question and a guess at favouri
 questions will be a class with variables for questions and answers
 - question.question = string text for question
 - question.buttons = # of buttons that this question has
-- question.interact() = record answer or open text box
+- question.interact() = record answer and increment current question or open text box
 
 draw start screen
+- current question = 0
+- questions = []
 - title card
 - start quiz button
 
 onMouseClick() 
 if mouseX and mouxeY in buttonWidth and buttonHeight
 question.interact()
+questions[current question]
