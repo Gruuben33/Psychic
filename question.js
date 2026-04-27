@@ -17,12 +17,11 @@ class question {
         } else {
             text(this.text, windowWidth/2, 100);
             for (let i = 0; i < this.options.length; i++) {
-                buttons.push(new button(this.options[i], windowWidth/2, 200 + i * 50));
+                buttons.push(new button(this.options[i], windowWidth/2, 200 + i * buttonSize));
             }
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].draw();
             }
-            buttons = [];
         }
     }
 }

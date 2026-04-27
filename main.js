@@ -1,12 +1,13 @@
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(windowWidth, windowHeight);
     background(220);
+    buttonSize = windowWidth / 20;
     responses = {};
     currentQuestion = 0;
     questions = [];
     questions.push(
     new question("Start Quiz!", ["Start"]), 
-    new question("What is your name?", []), 
+    //new question("What is your name?", []), 
     new question("How many pets do you have?", ["0", "1", "2", "3", "4", "5+"]),
     new question("Do you live in an urban area?", ["Yes", "No"]),
     new question("Do you like video games?", ["Yes", "No"]),
@@ -25,16 +26,21 @@ function setup() {
 
 function drawQuestion() {
     questions[currentQuestion].draw();
+    if (currentQuestion == 5) {
+        text(Object.values(responses).join(", "), 100, 300);
+    }
 }
 
 function mouseClicked() {
-    for (let button of buttons) {
-        if (button.checkClick() != null) {
-            responses[currentQuestion] = button.checkClick();
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].checkClick() != null) {
+            responses[currentQuestion] = buttons[i].checkClick();
             currentQuestion++;
             clear();
+            buttons = [];
             background(220);
             drawQuestion();
+            return;
         }
     }
 }
